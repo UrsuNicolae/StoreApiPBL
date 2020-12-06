@@ -383,9 +383,6 @@ C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\bin\Debug\netcoreap
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.csprojAssemblyReference.cache
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.AssemblyInfoInputs.cache
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.AssemblyInfo.cs
-C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.csproj.CoreCompileInputs.cache
-C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.RazorTargetAssemblyInfo.cache
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.csproj.CopyComplete
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\staticwebassets\ApI.StaticWebAssets.Manifest.cache
@@ -393,3 +390,9 @@ C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreap
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.dll
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.pdb
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.genruntimeconfig.cache
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.csproj.CoreCompileInputs.cache
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\obj\Debug\netcoreapp3.1\ApI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\bin\Debug\netcoreapp3.1\IdentityModel.dll
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\bin\Debug\netcoreapp3.1\IdentityModel.AspNetCore.OAuth2Introspection.dll
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\ApI\bin\Debug\netcoreapp3.1\IdentityServer4.AccessTokenValidation.dll

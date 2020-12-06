@@ -32,14 +32,14 @@ namespace ApI.Controllers
             //validate request 
             userForRegisterDTO.Email= userForRegisterDTO.Email.ToLower();
             if (await _authRepo.UserExists(userForRegisterDTO.Email))
-                return BadRequest("Email already exists!");
+                return BadRequest("Now valid email!");
             var userToCreate = new User
             {
                 Email = userForRegisterDTO.Email
             };
             var createdUser = await _authRepo.Register(userToCreate, userForRegisterDTO.Password);
 
-            return StatusCode(201);
+            return Ok(new { Email = userForRegisterDTO.Email});
         }
 
         [HttpPost("login")]

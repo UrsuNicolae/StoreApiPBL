@@ -31,6 +31,7 @@ namespace ApI.Controllers
 
         //Get /api/products
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Product>>> Get(int p = 1)
         {
             int pageSize = 4;
@@ -76,6 +77,7 @@ namespace ApI.Controllers
 
         //POST /api/products
         [HttpPost("create")]
+        [Authorize]
         public async Task<ActionResult<Product>> Create([FromForm] ProductDTO product)
         {
             string imageName = "noImage.png";
@@ -105,6 +107,7 @@ namespace ApI.Controllers
 
         //Put /api/products
         [HttpPut("update")]
+        [Authorize]
         public async Task<ActionResult<Product>> Update ([FromForm] Product product)
         {
             if (product.ImageUpload != null)
@@ -144,6 +147,7 @@ namespace ApI.Controllers
 
         //Delete /api/products/delete/id
         [HttpDelete("delete/{id}")]
+        [Authorize]
         public async Task<ActionResult<Product>> Delete(int id)
         {
             var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);

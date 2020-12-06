@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApI.Extensions;
 using ApI.Models.Data;
 using ApI.Repository;
 using ApI.Repository.IRepository;
@@ -38,29 +39,15 @@ namespace ApI
                 (Configuration.GetConnectionString("DefaultConnection")));
             services.AddCors();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "Zomato API",
-                    Version = "v1",
-                    Description = "Description for the API goes here.",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Ankush Jain",
-                        Email = string.Empty,
-                        Url = new Uri("https://coderjony.com/"),
-                    },
-                });
-            });
+            services.AddSwaggerDocumentation();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = Configuration["Jwt:Issuer"],
@@ -87,18 +74,15 @@ namespace ApI
 
             app.UseHttpsRedirection();
 
+            
+
             app.UseRouting();
 
             app.UseStaticFiles();
 
-            app.UseAuthorization();
+            app.UseSwaggerDocumentation();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json",
-                "Swagger Demo API v1");
-            });
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
