@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qK/InDotxhsZwCbKmXGZiBqo+4W3KseAw3HizmxIXymgOMl5ghPYHCvlaLM2VUBeXUVrQ4ti3DW621QM2vD1Cw==",
+  "dgSpecHash": "kF7GsS4Z69JIN3ywL6DCER02s4BPddLP5b12x1VqnCDB4mOgLiznczP9l0clfxojWU6Gj5KoXRayeGcea1xukQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\colea\\Desktop\\New folder\\ApI\\ApI.csproj",
+  "projectFilePath": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\ApI\\ApI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\colea\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.10\\microsoft.aspnetcore.authentication.jwtbearer.3.1.10.nupkg.sha512",
     "C:\\Users\\colea\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

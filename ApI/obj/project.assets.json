@@ -5941,11 +5941,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\colea\\Desktop\\New folder\\ApI\\ApI.csproj",
+      "projectUniqueName": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\ApI\\ApI.csproj",
       "projectName": "ApI",
-      "projectPath": "C:\\Users\\colea\\Desktop\\New folder\\ApI\\ApI.csproj",
+      "projectPath": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\ApI\\ApI.csproj",
       "packagesPath": "C:\\Users\\colea\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\colea\\Desktop\\New folder\\ApI\\obj\\",
+      "outputPath": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\ApI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
