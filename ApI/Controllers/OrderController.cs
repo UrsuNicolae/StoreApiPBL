@@ -32,6 +32,7 @@ namespace ApI.Controllers
 
         //Post /api/orders
         [HttpPost("create")]
+        [Authorize]
         public async Task<ActionResult<Order>> Create([FromForm] OrderDTO order)
         {
             var orderToCreate = new Order
