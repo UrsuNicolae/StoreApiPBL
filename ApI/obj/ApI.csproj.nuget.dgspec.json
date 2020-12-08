@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\ApI\\ApI.csproj": {}
+    "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\StoreApiPBL\\ApI\\ApI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\ApI\\ApI.csproj": {
+    "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\StoreApiPBL\\ApI\\ApI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\ApI\\ApI.csproj",
+        "projectUniqueName": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\StoreApiPBL\\ApI\\ApI.csproj",
         "projectName": "ApI",
-        "projectPath": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\ApI\\ApI.csproj",
+        "projectPath": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\StoreApiPBL\\ApI\\ApI.csproj",
         "packagesPath": "C:\\Users\\colea\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\ApI\\obj\\",
+        "outputPath": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\StoreApiPBL\\ApI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -62,6 +62,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.Filters": {
+              "target": "Package",
+              "version": "[6.0.1, )"
             },
             "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",

@@ -42,19 +42,15 @@ namespace ApI
             services.AddSwaggerDocumentation();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidIssuer = Configuration["Jwt:Issuer"],
-                        ValidAudience = Configuration["Jwt:Issuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-                    };
-                });
+                 .AddJwtBearer(options => {
+                     options.TokenValidationParameters = new TokenValidationParameters
+                     {
+                         ValidateIssuerSigningKey = true,
+                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                         ValidateIssuer = false,
+                         ValidateAudience = false
+                     };
+                 });
 
             services.AddScoped<IAuthRepository, AuthRepository>();
         }
@@ -72,17 +68,15 @@ namespace ApI
                 .AllowAnyHeader()
             );
 
-            app.UseHttpsRedirection();
-
-            
-
             app.UseRouting();
 
             app.UseStaticFiles();
 
             app.UseSwaggerDocumentation();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {
