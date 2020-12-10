@@ -10,7 +10,7 @@ services:
       - MPassSamlOptions__ServiceRootUrl=http://localhost:8080
       - ASPNETCORE_URLS=http://*:8080/
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=server=db;database=StoreAPI;User=sa;Password=Your_password123;
+      - ConnectionStrings__DefaultConnection=server=db;database=master;User=sa;Password=Your_password123;
 
     ports:
       - 8080:8080
@@ -20,7 +20,7 @@ services:
 
   db:
     container_name: store-mssql-server
-    image: "mcr.microsoft.com/mssql/server"
+    image: "microsoft/mssql-server-linux"
     environment:
       SA_PASSWORD: "Your_password123"
       ACCEPT_EULA: "Y"
