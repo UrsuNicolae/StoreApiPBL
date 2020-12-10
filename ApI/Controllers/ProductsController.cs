@@ -31,7 +31,6 @@ namespace ApI.Controllers
 
         //Get /api/products
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<IEnumerable<Product>>> Get(int p = 1)
         {
             int pageSize = 4;
@@ -102,7 +101,7 @@ namespace ApI.Controllers
             _context.Products.Add(productToCreate);
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok(new { Id = productToCreate.Id});
         }
 
         //Put /api/products
