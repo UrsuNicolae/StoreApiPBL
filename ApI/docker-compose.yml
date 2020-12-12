@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  api:
+    container_name: storeapi
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - MPassSamlOptions__ServiceRootUrl=http://localhost:8080
+      - ASPNETCORE_URLS=http://*:8080/
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=server=db;database=master;User=sa;Password=Your_password123;
+
+    ports:
+      - 8080:8080
+
+    depends_on:
+      - db
+
+  db:
+    container_name: store-mssql-server
+    image: "microsoft/mssql-server-linux"
+    environment:
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - 1433:1433
