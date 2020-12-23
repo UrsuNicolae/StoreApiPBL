@@ -27,8 +27,9 @@ namespace ApI.Controllers
         [HttpGet("get")]
         public async Task<ActionResult<IEnumerable<Category>>> Get()
         {
-            return await _context.Categories.OrderBy(x => x.Id).ToListAsync();
+            return await _context.Categories.Include(i => i.Products).ToListAsync();
         }
+
 
         [HttpPut("create")]
         [Authorize]
