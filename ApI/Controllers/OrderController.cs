@@ -12,7 +12,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
     {
@@ -25,13 +24,15 @@ namespace ApI.Controllers
 
         //Get /api/order
         [HttpGet]
+        [Route("api/[controller]/[action]")]
         public async Task<ActionResult<IEnumerable<Order>>> Get()
         {
             return await _context.Orders.OrderBy(x => x.Id).ToListAsync();
         }
 
         //Post /api/orders
-        [HttpPost("create")]
+        [HttpPost]
+        [Route("api/[controller]/[action]")]
         [Authorize]
         public async Task<ActionResult<Order>> Create([FromForm] OrderDTO order)
         {
