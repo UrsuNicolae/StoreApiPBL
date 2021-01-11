@@ -12,7 +12,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
     {
@@ -24,13 +23,16 @@ namespace ApI.Controllers
         }
 
         //Get /api/category
-        [HttpGet("get")]
-        public async Task<ActionResult<IEnumerable<Category>>> Get()
+        [HttpGet]
+        [Route("api/[controller]/[action]")]
+        public async Task<ActionResult<IEnumerable<Category>>> GetAllCategories()
         {
-            return await _context.Categories.OrderBy(x => x.Id).ToListAsync();
-        }
+            return await _context.Categories.ToListAsync();
+        }   
 
-        [HttpPut("create")]
+
+        [HttpPut]
+        [Route("api/[controller]/[action]")]
         [Authorize]
         public async Task<ActionResult<int>> CreateCategory(CategoryDTO model)
         {
@@ -47,7 +49,8 @@ namespace ApI.Controllers
 
         }
 
-        [HttpGet("get/id")]
+        [HttpGet]
+        [Route("api/[controller]/[action]")]
         public async Task<ActionResult<Category>> GetCategoryById(int id)
         {
             var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
@@ -55,7 +58,8 @@ namespace ApI.Controllers
             return Ok(category);
         }
 
-        [HttpPost("update")]
+        [HttpPost]
+        [Route("api/[controller]/[action]")]
         public async Task<ActionResult> UpdateCategory(CategoryUpdateDTO model)
         {
             var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == model.Id);
@@ -72,7 +76,8 @@ namespace ApI.Controllers
             return NoContent();
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete]
+        [Route("api/[controller]/[action]")]
         public async Task<ActionResult> DeleteCategory(int id)
         {
             var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);

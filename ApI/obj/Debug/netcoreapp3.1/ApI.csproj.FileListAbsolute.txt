@@ -468,6 +468,11 @@ C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Deb
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Debug\netcoreapp3.1\Scrutor.dll
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Annotations.dll
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\obj\Debug\netcoreapp3.1\ApI.csproj.CoreCompileInputs.cache
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\obj\Debug\netcoreapp3.1\ApI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\obj\Debug\netcoreapp3.1\ApI.MvcApplicationPartsAssemblyInfo.cache

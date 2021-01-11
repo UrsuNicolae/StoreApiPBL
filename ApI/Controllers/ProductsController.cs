@@ -5,8 +5,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ApI.DTOs;
+using ApI.Extensions;
+using ApI.Helpers;
 using ApI.Models;
 using ApI.Models.Data;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,17 +24,21 @@ namespace ApI.Controllers
     {
         private readonly APIContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IMapper _mapper;
 
         public ProductsController(APIContext context,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment,
+            IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
             _webHostEnvironment = webHostEnvironment;
         }
 
         //Get /api/products
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> Get(int p = 1)
+        [Route("api/[controller]/[action]")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetPaginatedProducts(int p = 1)
         {
             int pageSize = 4;
             var products = _context.Products.OrderBy(x => x.Id)
@@ -42,23 +49,32 @@ namespace ApI.Controllers
         }
 
         //Get /api/products/category
-        [HttpGet("{slug}")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetByCategory(string slug, int p = 1)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsByCategory([FromQuery]ProductParams productParams)
         {
-            var categoryFromDb = await _context.Categories.FirstOrDefaultAsync(x => x.Slug == slug);
-            if (categoryFromDb == null)
-                return NotFound();
+            var products =  _context.Products.AsQueryable();
 
-            int pageSize = 4;
-            var products = _context.Products.OrderBy(x => x.Id)
-                    .Where(x => x.CategoryId == categoryFromDb.Id).Skip((p - 1) * pageSize)
-                    .Take(pageSize);
+            if(productParams.CategoryId != -1)
+            {
+                var categoryFromDb = await _context.Categories.FirstOrDefaultAsync(x => x.Id == productParams.CategoryId);
+                if (categoryFromDb == null)
+                    return NotFound();
 
-            return await products.ToListAsync();
+                products = products.Where(x => x.CategoryId == productParams.CategoryId);
+            }
+            var listToReturn = await PagedList<Product>.CreateAsync(products, productParams.PageNumber, productParams.PageSize);
+            
+            Response.AddPagination(listToReturn.CurrentPage, listToReturn.PageSize,
+             listToReturn.TotalCount, listToReturn.TotalPages);
+
+            var productsToReturn = _mapper.Map<IEnumerable<ProductDTO>>(listToReturn);
+
+            return Ok(productsToReturn);
         }
 
         //Get /api/products/count/category
-        [HttpGet("count/{slug}")]
+        [HttpGet]
+        [Route("api/[controller]/[action]")]
         public async Task<ActionResult<int>> GetProductCount(string slug)
         {
             if (slug == "all")
@@ -67,17 +83,25 @@ namespace ApI.Controllers
             return await _context.Products.Where(x => x.CategoryId == category.Id).CountAsync();
         }
 
+        [HttpGet]
+        [Route("api/[controller]/[action]")]
+        public async Task<ActionResult<List<Product>>> GetAllProducts()
+        {
+            return await _context.Products.ToListAsync();
+        }
+
         //Get /api/products/GetById/id
         [HttpGet("GetById/{id}")]
-        public async Task<ActionResult<Product>> GetById(int id)
+        public async Task<ActionResult<Product>> GetProductById(int id)
         {
             return await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         //POST /api/products
-        [HttpPost("create")]
+        [HttpPost]
+        [Route("api/[controller]/[action]")]
         [Authorize]
-        public async Task<ActionResult<Product>> Create([FromForm] ProductDTO product)
+        public async Task<ActionResult<Product>> CreateProduct([FromForm] ProductDTO product)
         {
             string imageName = "noImage.png";
             if(product.ImageUpload != null)
@@ -105,9 +129,10 @@ namespace ApI.Controllers
         }
 
         //Put /api/products
-        [HttpPut("update")]
+        [HttpPut]
+        [Route("api/[controller]/[action]")]
         [Authorize]
-        public async Task<ActionResult<Product>> Update ([FromForm] Product product)
+        public async Task<ActionResult<Product>> UpdateUpdateProduct ([FromForm] Product product)
         {
             if (product.ImageUpload != null)
             {
@@ -145,7 +170,8 @@ namespace ApI.Controllers
         }
 
         //Delete /api/products/delete/id
-        [HttpDelete("delete/{id}")]
+        [HttpDelete]
+        [Route("api/[controller]/[action]")]
         [Authorize]
         public async Task<ActionResult<Product>> Delete(int id)
         {

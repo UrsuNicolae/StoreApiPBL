@@ -22,7 +22,7 @@ namespace ApI.Models
         public decimal Price { get; set; }
 
         [ForeignKey("CategoryId")]
-        public virtual Category Category {get; set;}
+        public Category Category { get; set; } = null;
 
         [NotMapped]
         public IFormFile ImageUpload { get; set; }

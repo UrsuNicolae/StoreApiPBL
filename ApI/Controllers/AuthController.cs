@@ -14,7 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace ApI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -26,7 +26,7 @@ namespace ApI.Controllers
             _config = config;
         }
 
-        [HttpPost("register")]
+        [HttpPost]
         public async Task<IActionResult> Register(UserForRegisterDTO userForRegisterDTO)
         {
             //validate request 
@@ -42,7 +42,7 @@ namespace ApI.Controllers
             return Ok(new { Email = userForRegisterDTO.Email});
         }
 
-        [HttpPost("login")]
+        [HttpPost]
         public async Task<IActionResult> Login(UserForLoginDTO userForLoginDTO)
         {
             var userFromRepo = await _authRepo.Login(userForLoginDTO.Email.ToLower(), userForLoginDTO.Password);
