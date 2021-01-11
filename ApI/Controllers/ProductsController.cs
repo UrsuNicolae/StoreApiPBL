@@ -5,8 +5,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ApI.DTOs;
+using ApI.Extensions;
+using ApI.Helpers;
 using ApI.Models;
 using ApI.Models.Data;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,11 +24,14 @@ namespace ApI.Controllers
     {
         private readonly APIContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IMapper _mapper;
 
         public ProductsController(APIContext context,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment,
+            IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
             _webHostEnvironment = webHostEnvironment;
         }
 
@@ -43,19 +49,27 @@ namespace ApI.Controllers
         }
 
         //Get /api/products/category
-        [HttpGet("{categoryId}/{page}")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int categoryId, int page)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsByCategory([FromQuery]ProductParams productParams)
+        {
+            var products =  _context.Products.AsQueryable();
+
+            if(productParams.CategoryId != -1)
             {
-            var categoryFromDb = await _context.Categories.FirstOrDefaultAsync(x => x.Id == categoryId);
-            if (categoryFromDb == null)
-                return NotFound();
+                var categoryFromDb = await _context.Categories.FirstOrDefaultAsync(x => x.Id == productParams.CategoryId);
+                if (categoryFromDb == null)
+                    return NotFound();
 
-            int pageSize = 4;
-            var products = _context.Products.OrderBy(x => x.Id)
-                    .Where(x => x.CategoryId == categoryFromDb.Id).Skip((page - 1) * pageSize)
-                    .Take(pageSize);
+                products = products.Where(x => x.CategoryId == productParams.CategoryId);
+            }
+            var listToReturn = await PagedList<Product>.CreateAsync(products, productParams.PageNumber, productParams.PageSize);
+            
+            Response.AddPagination(listToReturn.CurrentPage, listToReturn.PageSize,
+             listToReturn.TotalCount, listToReturn.TotalPages);
 
-            return await products.ToListAsync();
+            var productsToReturn = _mapper.Map<IEnumerable<ProductDTO>>(listToReturn);
+
+            return Ok(productsToReturn);
         }
 
         //Get /api/products/count/category
