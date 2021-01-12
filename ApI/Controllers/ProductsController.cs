@@ -9,6 +9,7 @@ using ApI.Extensions;
 using ApI.Helpers;
 using ApI.Models;
 using ApI.Models.Data;
+using ApI.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -25,14 +26,17 @@ namespace ApI.Controllers
         private readonly APIContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IMapper _mapper;
+        private readonly IPhotoService _photoService;
 
         public ProductsController(APIContext context,
             IWebHostEnvironment webHostEnvironment,
-            IMapper mapper)
+            IMapper mapper,
+            IPhotoService photoService)
         {
             _context = context;
             _mapper = mapper;
             _webHostEnvironment = webHostEnvironment;
+            _photoService = photoService;
         }
 
         //Get /api/products
@@ -104,7 +108,7 @@ namespace ApI.Controllers
         public async Task<ActionResult<Product>> CreateProduct([FromForm] ProductDTO product)
         {
             string imageName = "noImage.png";
-            if(product.ImageUpload != null)
+            if (product.ImageUpload != null)
             {
                 string uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "media\\products");
                 imageName = Guid.NewGuid().ToString() + "_" + product.ImageUpload.FileName;
@@ -125,7 +129,7 @@ namespace ApI.Controllers
             _context.Products.Add(productToCreate);
             await _context.SaveChangesAsync();
 
-            return Ok(new { Id = productToCreate.Id});
+            return Ok(new { Id = productToCreate.Id });
         }
 
         //Put /api/products
@@ -159,7 +163,7 @@ namespace ApI.Controllers
                 product.Image = imageName;
             }
             _context.Entry(product).State = EntityState.Modified;
-            if(product.ImageUpload == null)
+            if (product.ImageUpload == null)
             {
                 _context.Entry(product).Property("Image").IsModified = false;
             }
@@ -176,17 +180,6 @@ namespace ApI.Controllers
         public async Task<ActionResult<Product>> Delete(int id)
         {
             var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
-
-            if(!string.Equals(product.Image, "noimage.png"))
-            {
-                string uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath,
-                    "media/products");
-                string oldImagePath = Path.Combine(uploadsDir, product.Image);
-                if (System.IO.File.Exists(oldImagePath))
-                {
-                    System.IO.File.Delete(oldImagePath);
-                }
-            }
 
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();

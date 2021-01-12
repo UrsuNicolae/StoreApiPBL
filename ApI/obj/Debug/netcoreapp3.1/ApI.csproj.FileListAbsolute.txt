@@ -476,3 +476,4 @@ C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Deb
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\obj\Debug\netcoreapp3.1\ApI.csproj.CoreCompileInputs.cache
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\obj\Debug\netcoreapp3.1\ApI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\obj\Debug\netcoreapp3.1\ApI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\colea\Desktop\Anul II\New folder (2)\New folder\StoreApiPBL\ApI\bin\Debug\netcoreapp3.1\CloudinaryDotNet.dll

@@ -7,10 +7,13 @@
   <ItemGroup>
     <Compile Remove="Migrations\20201222211457_ModifyCategoryEntity.cs" />
     <Compile Remove="Migrations\20201222211457_ModifyCategoryEntity.Designer.cs" />
+    <Compile Remove="Migrations\20210112080700_AddPhotoEntity.cs" />
+    <Compile Remove="Migrations\20210112080700_AddPhotoEntity.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="CloudinaryDotNet" Version="1.14.0" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
