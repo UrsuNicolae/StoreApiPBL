@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "/s5wlxHGo9HLPrC3gd2Xfy1oGXpSV8cbf5o3NkGuwhunnjUmcBh5eJkmuDhXIv/w388uCftW1APiZEy8+n5MIQ==",
+  "dgSpecHash": "fSwjO2esfFtE+nu42nOi/xa6+tjbiyXTa2d0mifHDrWMZ6wTHVde+SFTpXbuUBifstLBBpkWNrS0/13fhT4mVQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\colea\\Desktop\\Anul II\\New folder (2)\\New folder\\StoreApiPBL\\ApI\\ApI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\colea\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\colea\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
+    "C:\\Users\\colea\\.nuget\\packages\\cloudinarydotnet\\1.14.0\\cloudinarydotnet.1.14.0.nupkg.sha512",
     "C:\\Users\\colea\\.nuget\\packages\\identitymodel\\4.0.0\\identitymodel.4.0.0.nupkg.sha512",
     "C:\\Users\\colea\\.nuget\\packages\\identitymodel.aspnetcore.oauth2introspection\\4.0.1\\identitymodel.aspnetcore.oauth2introspection.4.0.1.nupkg.sha512",
     "C:\\Users\\colea\\.nuget\\packages\\identityserver4.accesstokenvalidation\\3.0.1\\identityserver4.accesstokenvalidation.3.0.1.nupkg.sha512",

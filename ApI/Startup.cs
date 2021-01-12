@@ -21,6 +21,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
 using ApI.Profiles;
+using ApI.Helpers;
+using ApI.Services;
 
 namespace ApI
 {
@@ -59,8 +61,9 @@ namespace ApI
                          ValidateAudience = false
                      };
                  });
-
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddScoped<IAuthRepository, AuthRepository>();
+            //services.AddScoped<IPhotoService, PhotoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

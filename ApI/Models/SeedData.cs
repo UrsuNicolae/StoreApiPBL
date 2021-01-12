@@ -157,8 +157,7 @@ namespace ApI.Models
                         Description = "Delicious watermelon",
                         Image = "watermelon.jpg",
                         Price = .50M
-                    }
-               );
+                    });
 
                 context.SaveChanges();
             }
