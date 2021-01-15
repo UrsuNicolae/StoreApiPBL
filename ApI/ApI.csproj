@@ -9,6 +9,22 @@
     <Compile Remove="Migrations\20201222211457_ModifyCategoryEntity.Designer.cs" />
     <Compile Remove="Migrations\20210112080700_AddPhotoEntity.cs" />
     <Compile Remove="Migrations\20210112080700_AddPhotoEntity.Designer.cs" />
+    <Compile Remove="Migrations\20210115180525_AddChatModel.cs" />
+    <Compile Remove="Migrations\20210115180525_AddChatModel.Designer.cs" />
+    <Compile Remove="Migrations\20210115180732_AddChatModel.cs" />
+    <Compile Remove="Migrations\20210115180732_AddChatModel.Designer.cs" />
+    <Compile Remove="Migrations\20210115181102_AddChartModel.cs" />
+    <Compile Remove="Migrations\20210115181102_AddChartModel.Designer.cs" />
+    <Compile Remove="Migrations\20210115181321_updateOrderModel.cs" />
+    <Compile Remove="Migrations\20210115181321_updateOrderModel.Designer.cs" />
+    <Compile Remove="Migrations\20210115181440_updateOrderModel.cs" />
+    <Compile Remove="Migrations\20210115181440_updateOrderModel.Designer.cs" />
+    <Compile Remove="Migrations\20210115182427_UpdateOrderModel2.cs" />
+    <Compile Remove="Migrations\20210115182427_UpdateOrderModel2.Designer.cs" />
+    <Compile Remove="Migrations\20210115184618_OrderModify.cs" />
+    <Compile Remove="Migrations\20210115184618_OrderModify.Designer.cs" />
+    <Compile Remove="Migrations\20210115191429_tes.cs" />
+    <Compile Remove="Migrations\20210115191429_tes.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
