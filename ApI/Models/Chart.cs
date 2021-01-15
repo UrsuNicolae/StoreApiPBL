@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApI.Models
 {
-    public class Order
+    public class Chart
     {
         public int Id { get; set; }
 
@@ -15,15 +15,8 @@ namespace ApI.Models
 
         public User User { get; set; }
 
-        [Required]
-        public int ProductId { get; set; }
+        public ICollection<Order> Orders { get; set; }
 
-        public Product Product { get; set; }
-
-        public int Quantity { get; set; } = 0;
-
-        public int? ChartId { get; set; }
-
-        public Chart Chart { get; set; }
+        public decimal Total { get; set; }
     }
 }

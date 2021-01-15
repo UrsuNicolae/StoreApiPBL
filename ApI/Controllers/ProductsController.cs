@@ -26,17 +26,14 @@ namespace ApI.Controllers
         private readonly APIContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IMapper _mapper;
-        private readonly IPhotoService _photoService;
 
         public ProductsController(APIContext context,
             IWebHostEnvironment webHostEnvironment,
-            IMapper mapper,
-            IPhotoService photoService)
+            IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
             _webHostEnvironment = webHostEnvironment;
-            _photoService = photoService;
         }
 
         //Get /api/products
