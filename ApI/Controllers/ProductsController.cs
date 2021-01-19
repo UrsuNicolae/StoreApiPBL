@@ -54,7 +54,7 @@ namespace ApI.Controllers
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsByCategory([FromQuery]ProductParams productParams)
         {
             var products =  _context.Products.AsQueryable();
-
+                
             if(productParams.CategoryId != -1)
             {
                 var categoryFromDb = await _context.Categories.FirstOrDefaultAsync(x => x.Id == productParams.CategoryId);

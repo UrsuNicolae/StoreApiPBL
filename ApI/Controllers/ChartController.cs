@@ -23,11 +23,11 @@ namespace ApI.Controllers
             _context = context;
         }
 
-        [HttpPut]
-        [Route("api/[controller]/[action]")]
+        [HttpPost]
+        [Route(nameof(CreateOrder))]
         public async Task<IActionResult> CreateOrder(CreateOrderDto model)
         {
-            var chart = await _context.Charts.FirstOrDefaultAsync(x => x.Id == model.ChartId);
+            var chart = await _context.Charts.FirstOrDefaultAsync(x => x.Id == model.ChartId || x.UserId == model.UserId);
             if (chart == null)
             {
                 chart = new Chart();
@@ -89,10 +89,10 @@ namespace ApI.Controllers
         }
 
         [HttpDelete]
-        [Route("api/[controller]/[action]")]
-        public async Task<IActionResult> DeleteOrder(int Id)
+        [Route("delete/{id}")]
+        public async Task<IActionResult> DeleteOrder(int id)
         {
-            var orderFromDb = await _context.Orders.Include(i => i.Product).FirstOrDefaultAsync(x => x.Id == Id);
+            var orderFromDb = await _context.Orders.Include(i => i.Product).FirstOrDefaultAsync(x => x.Id == id);
             if (orderFromDb == null)
                 return BadRequest("Order not found!");
             var chart = await _context.Charts.FirstOrDefaultAsync(x => x.Id == orderFromDb.ChartId);
@@ -111,7 +111,7 @@ namespace ApI.Controllers
         }
 
         [HttpGet]
-        [Route("api/[controller]/[action]")]
+        [Route("{userId}")]
         public async Task<IActionResult> GetChartNumbers(int userId)
         {
             var chart = await _context.Charts.Include(i => i.Orders).FirstOrDefaultAsync(x => x.UserId == userId);
@@ -120,6 +120,18 @@ namespace ApI.Controllers
                 return Ok(0);
             }
             return Ok(chart.Orders.Count());
+        }
+
+        [HttpGet]
+        [Route("chart/{userId}")]
+        public async Task<IActionResult>GetUserCart(int userId)
+        {
+            var chart = await _context.Charts.Include(i => i.Orders)
+                .ThenInclude(i => i.Product)
+                .FirstOrDefaultAsync(x => x.UserId == userId);
+            if (chart == null)
+                return BadRequest("Your chart is emty!");
+            return Ok(chart);
         }
     }
 }
