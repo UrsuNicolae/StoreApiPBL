@@ -129,6 +129,48 @@ namespace ApI.Controllers
             return Ok(new { Id = productToCreate.Id });
         }
 
+
+        [HttpPost]
+        [Route("api/[controller]/[action]")]
+        [Authorize]
+        public async Task<ActionResult<Product>> CreateProductFromBody( ProductDTO product)
+        {
+            var productToCreate = new Product
+            {
+                Image = product.Image,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                CategoryId = product.CategoryId
+            };
+            _context.Products.Add(productToCreate);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Id = productToCreate.Id });
+        }
+
+        [HttpPost]
+        [Route("api/[controller]/[action]")]
+        [Authorize]
+        public async Task<ActionResult<Product>> CreateListProduct(List<ProductDTO> products)
+        {
+            foreach(var product in products)
+            {
+                var productToCreate = new Product
+                {
+                    Image = product.Image,
+                    Name = product.Name,
+                    Description = product.Description,
+                    Price = product.Price,
+                    CategoryId = product.CategoryId
+                };
+                _context.Products.Add(productToCreate);
+                await _context.SaveChangesAsync();
+            }
+            
+
+            return Ok();
+        }
         //Put /api/products
         [HttpPut]
         [Route("api/[controller]/[action]")]
