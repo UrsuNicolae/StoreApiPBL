@@ -65,7 +65,7 @@ namespace ApI.Models
                     new Product
                     {
                         Name = "White Shirt",
-                        CategoryId = 2,
+                        CategoryId = 1,
                         Description = "A white t-shirt",
                         Image = "white_shirt.jpg",
                         Price = 2.99M
